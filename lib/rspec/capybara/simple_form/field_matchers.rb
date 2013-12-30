@@ -9,7 +9,7 @@ RSpec::Matchers.define :have_field do |model, name, ftype, dtype, options = {}|
     checkstring = "#{checkstring}.required" if options[:required]
 
     # do our checks
-    return false unless rendered.should have_selector("form div.control-group.#{checkstring}.#{field_key} label.#{checkstring}")
+    return false unless rendered.should have_selector("form div.control-group.#{checkstring}.#{field_key} label.#{checkstring}") unless options[:nolabel]
     return false unless rendered.should have_selector("form div.control-group.#{checkstring}.#{field_key} #{ftype}.#{checkstring}##{field_key}")
 
     # done
@@ -26,5 +26,12 @@ end
 RSpec::Matchers.define :have_textarea_field do |model, name, options = {}|
   match do |rendered|
     rendered.should have_field(model, name, 'textarea','text', options)
+  end
+end
+
+RSpec::Matchers.define :have_hidden_field do |model, name, options = {}|
+  match do |rendered|
+    options[:nolabel] = true
+    rendered.should have_field(model, name, 'input[type=hidden]','hidden', options)
   end
 end
