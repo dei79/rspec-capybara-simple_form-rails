@@ -1,7 +1,8 @@
 RSpec::Matchers.define :have_field do |model, name, ftype, dtype, options = {}|
   match do |rendered|
     # define the field key
-    field_key = "#{model.class.to_s.downcase}_#{name.to_s.downcase}"
+    field_key = "#{model.class.to_s.underscore}_#{name.to_s.underscore}"
+    field_key = field_key.gsub(/\//, '_')
 
     # build the check string
     checkstring = "#{dtype}"
