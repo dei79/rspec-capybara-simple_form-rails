@@ -14,24 +14,19 @@ And then execute:
 
 Add the following lines to your spec_helper.rb
 
-    ```ruby
     # load capybara
     require 'capybara/rspec'
     require 'rspec/capybara/simple_form'
-    ```
 
 ## Usage
 
 In a view spec just use the following matchers
 
-    ```ruby
     have_input_field(model, attribute, options)
     have_textarea_field(model, attribute, options)
-    ```
 
 The following example illustrates a full example:
 
-    ```ruby
     it "renders the form correct" do
 
         # assign model
@@ -44,7 +39,6 @@ The following example illustrates a full example:
         rendered.should have_input_field(@app, :name, :required => true)
         rendered.should have_textarea_field(@app, :description, :required => true)
     end
-    ```
 
 ## Contributing
 
