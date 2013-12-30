@@ -2,6 +2,8 @@
 
 A small rspec extension to verify simple form elements with the help of capybara.
 
+[![Gem Version](https://badge.fury.io/rb/rspec-capybara-simple_form-rails.png)](http://badge.fury.io/rb/rspec-capybara-simple_form-rails)
+
 ## Installation
 
 Add this line to your application's Gemfile:
